@@ -66,7 +66,7 @@
                         <div class="col-lg-6 text-center text-lg-start">
                             <h1 class="text-white mb-4 animated zoomIn">Smart Booth App</h1>
                             <p class="text-white pb-3 animated zoomIn">Complete your voting in your home with our smart booth card.</p>
-                            <a href="user.html" class="btn btn-light py-sm-3 px-sm-5 rounded-pill me-3 animated slideInLeft">Login</a>
+                            <a href="login.php" class="btn btn-light py-sm-3 px-sm-5 rounded-pill me-3 animated slideInLeft">Login</a>
                             <a href="" class="btn btn-outline-light py-sm-3 px-sm-5 rounded-pill animated slideInRight">Download Form</a>
                         </div>
                         <div class="col-lg-6 text-center text-lg-start">
