@@ -1,3 +1,14 @@
+<?php
+session_start();
+require("conn.php");
+if(!isset($_SESSION['id'])){
+  header("location:index.php")
+;}
+$id=$_SESSION['id'];
+$sql="select * from users where smart_id='$id'";
+$res=mysqli_query($con,$sql) or die(mysqli_error($con));
+$row=mysqli_fetch_array($res);
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -30,11 +41,11 @@
             <div class="profile-desc">
               <div class="profile-pic">
                 <div class="count-indicator">
-                  <img class="img-xs rounded-circle " src="./2.png" alt="">
+                  <img class="img-xs rounded-circle " src="./admin/uploads/<?php echo $row['photo'] ?>" alt="">
                   <span class="count bg-success"></span>
                 </div>
                 <div class="profile-name">
-                  <h5 class="mb-0 font-weight-normal">Anirban Dash</h5>
+                  <h5 class="mb-0 font-weight-normal"><?php echo $row['name']; ?></h5>
                   <span>Voter</span>
                 </div>
               </div>

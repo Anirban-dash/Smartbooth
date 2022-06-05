@@ -1,3 +1,15 @@
+<?php
+require("conn.php");
+session_start();
+if(!isset($_SESSION['id'])){
+  header("location:index.php")
+;}
+$id=$_SESSION['id'];
+$sql="select * from users where smart_id='$id'";
+$res=mysqli_query($con,$sql) or die(mysqli_error($con));
+$row=mysqli_fetch_array($res);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -31,11 +43,11 @@
             <div class="profile-desc">
               <div class="profile-pic">
                 <div class="count-indicator">
-                  <img class="img-xs rounded-circle " src="./2.png" alt="">
+                  <img class="img-xs rounded-circle " src="./admin/uploads/<?php echo $row['photo'] ?>" alt="">
                   <span class="count bg-success"></span>
                 </div>
                 <div class="profile-name">
-                  <h5 class="mb-0 font-weight-normal">Anirban Dash</h5>
+                  <h5 class="mb-0 font-weight-normal"><?php echo $row['name']; ?></h5>
                   <span>Voter</span>
                 </div>
               </div>
@@ -143,17 +155,17 @@
                             <img src="img/logo.png">
                         </div>
                         <div class="photo">
-                            <img style="border-radius:50%" src="img/team-1.jpg">
+                            <img style="border-radius:50%" src="./admin/uploads/<?php echo $row['photo'] ?>">
                         </div>
-                        <h2>Anirban Dash</h2>
+                        <h2><?php echo $row['name']; ?></h2>
                         <div id="qrcode"  class="qr-code">
                         </div>
-                        <h3><strong>2020WB70043</strong></h3>
+                        <h3><strong><?php echo $row['smart_id']; ?></strong></h3>
                         
                         <hr>
-                        <p>MALE</p>
-                        <p>Jhargram,West Bengal | Pin: 721508 </p>
-                        <p>Ph: 9446062493 | Email: info@onetikk.info</p>
+                        <p><?php echo strtoupper($row['gender']); ?></p>
+                        <p><?php echo $row['city']; ?>,<?php echo $row['state']; ?> | Pin: <?php echo $row['pincode']; ?> </p>
+                        <p>Ph: <?php echo $row['mobile']; ?> | Email: <?php echo $row['mail']; ?></p>
                         
             
                     </div>
@@ -196,9 +208,9 @@
     <script src='./js/easy.qrcode.js'></script>
     <script>
         var qrcode = new QRCode(document.getElementById("qrcode"), {
-    text: "Anirban Dash",
-    height:80,
-    width:80,
+    text: "<?php echo $row['name']; ?>",
+    height:60,
+    width:60,
     logo: "img/logo.png",
     logoWidth: undefined,
     logoHeight: undefined,

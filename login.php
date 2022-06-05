@@ -49,10 +49,10 @@ a{
       
             <div class="mb-3">
               <input type="text" name="id" class="form-control"  aria-describedby="emailHelp"
-                placeholder="User Name">
+                placeholder="User Name" required>
             </div>
             <div class="mb-3">
-              <input type="password" name="pass" class="form-control"  placeholder="password">
+              <input type="password" name="pass" class="form-control"  placeholder="password" required>
             </div>
             <?php 
             if(isset($_GET['err'])){
