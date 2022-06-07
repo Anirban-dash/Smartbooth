@@ -49,11 +49,49 @@ if(!empty($_FILES["file"]["name"])){
 
 $insertSql="INSERT INTO `users` (`name`, `aadhar`, `voter`, `dob`, `gender`, `mail`, `mobile`, `pincode`, `state`, `city`, `smart_id`, `photo`, `pass`) VALUES ('$name', '$aadhar', '$voter', '$dob', '$gender', '$mail', '$number', '$pincode', '$state', '$city', '$smart_id', '$fileName', '$pass')";
 $res=mysqli_query($con,$insertSql) or die(mysqli_error($con));
-echo "Success";
 
-
-
-
-
-
+echo '<!DOCTYPE html>
+<html lang="en">
+  <head>  
+    <title>Smart Booth</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+  </head>
+  <style>
+  @media print {
+    .noPrint{
+      display:none;
+    }
+  }
+  </style>
+<body>
+  <div class="container">
+    
+   
+    <div class="card bg-success text-white">
+    <h3 class="noPrint">User added Successfully</h3>
+      <div class="card-body"></div>
+    </div><br>
+    <div class="card bg-success text-white">
+    <p>Smartbooth ID: '.$smart_id.'</p><br>
+    <p>Smartbooth Password: '.$pass.'</p><br>
+      <div class="card-body"><a href="userAdd.php"><button class="noPrint" type="button" class="btn btn-warning">Go back</button></a></div>
+    </div>
+  </div>
+  <button class="noPrint" onclick="display()">Click to Print</button>
+      <script>
+         function display() {
+            window.print();
+         }
+      </script>
+</body>
+</html>';
 ?>
+
+
+
+
+
